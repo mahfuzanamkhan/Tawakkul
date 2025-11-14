@@ -1,0 +1,363 @@
+/* General Setup */
+:root {
+    --bg-dark: #0a0a0a;
+    --card-dark: rgba(25, 25, 25, 0.7); /* Base for glass effect */
+    --gold-primary: #FFD700; /* Gold */
+    --gold-glow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.2);
+    --transition-speed: 0.3s;
+    --border-radius: 15px;
+    --font-primary: 'Poppins', sans-serif;
+    --font-arabic: 'Lateef', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    /* Default Daytime Background (Dhuhr/Asr) */
+    background: linear-gradient(135deg, var(--bg-dark), #1c1c1c);
+    color: #f0f0f0;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: background 1.5s ease; /* Smooth transition for dynamic theme changes */
+}
+
+/* Card Styling (Glassmorphism Effect) */
+.card {
+    background: var(--card-dark);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--gold-glow);
+    padding: 25px;
+    margin-bottom: 0; /* Handled by grid gap */
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background 1.5s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--gold-glow);
+}
+
+/* Typography and Headings */
+h1 {
+    color: var(--gold-primary);
+    font-weight: 600;
+    font-size: 4rem;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: var(--gold-primary);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.arabic-text {
+    font-family: var(--font-arabic);
+    direction: rtl;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    color: var(--gold-primary);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.english-text {
+    font-weight: 300;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Layout */
+.dashboard-container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.title-card {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* --- MAIN GRID LAYOUT (2x2 Top/Middle, 1x Full Bottom) --- */
+.main-grid {
+    display: grid;
+    /* Two balanced columns */
+    grid-template-columns: 1fr 1fr; 
+    /* Three rows: Top, Middle, Bottom (Prayer) */
+    grid-template-rows: auto auto auto; 
+    gap: 20px;
+}
+
+/* --- GRID ASSIGNMENTS --- */
+
+/* Row 1 */
+.names-card {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+}
+.date-card {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+/* Row 2 */
+#dua-card {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+#qibla-card {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+/* Row 3 (Full Width) */
+.prayer-card {
+    grid-column: 1 / 3; /* Spans across both columns */
+    grid-row: 3 / 4; 
+}
+
+
+/* --- 99 Names Carousel Styling --- */
+#asma-ul-husna-carousel {
+    text-align: center;
+    position: relative;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px; 
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px; 
+}
+
+.carousel-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    padding: 10px 0;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.name-arabic {
+    font-family: var(--font-arabic);
+    font-size: 4rem; 
+    margin-bottom: 10px; 
+}
+
+.name-translit {
+    font-size: 1.5rem; 
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 8px;
+}
+
+.name-meaning {
+    font-style: italic;
+    font-size: 1.1rem; 
+    color: #aaa;
+}
+
+.control-btn {
+    background: var(--gold-primary);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: var(--gold-glow);
+}
+
+.control-btn:hover {
+    background-color: #e5c100;
+    transform: scale(1.05);
+}
+
+
+/* --- Date & Countdown --- */
+.date-display {
+    font-size: 3.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.countdown-label {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    color: var(--gold-primary);
+}
+
+.countdown {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold-primary);
+    text-shadow: var(--gold-glow);
+}
+
+/* --- Du'a Content --- */
+#dua-content .arabic-text {
+    font-size: 2rem;
+    min-height: 80px;
+}
+
+/* --- Qibla Direction Indicator --- */
+.qibla-display {
+    text-align: center;
+    padding: 100px 0;
+}
+
+#qibla-angle {
+    font-size: 3rem; 
+    font-weight: 700;
+    color: var(--gold-primary);
+    text-shadow: var(--gold-glow);
+    margin-bottom: 5px;
+}
+
+
+/* --- Prayer Times --- */
+#next-prayer-info {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+#next-prayer-info #next-prayer-name {
+    color: var(--gold-primary);
+    font-weight: 600;
+}
+
+#next-prayer-info #next-prayer-countdown {
+    color: var(--gold-primary);
+    font-weight: 700;
+    text-shadow: var(--gold-glow);
+}
+
+.prayer-times-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    text-align: center;
+}
+
+.prayer-time-item {
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: background-color var(--transition-speed);
+}
+
+.prayer-time-item.next {
+    background-color: rgba(255, 215, 0, 0.15); /* Highlight for next prayer */
+    box-shadow: var(--gold-glow);
+    font-weight: 600;
+}
+
+.prayer-icon {
+    font-size: 2rem; /* Use font size for Font Awesome icons */
+    color: var(--gold-primary);
+    margin-bottom: 5px;
+}
+
+.prayer-name {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gold-primary);
+    margin-bottom: 2px;
+}
+
+.prayer-time {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+/* --- Dynamic Background Themes --- */
+
+/* Fajr Theme (Dawn/Pre-Sunrise) */
+.theme-fajr {
+    background: linear-gradient(135deg, #0a1420, #3a4a58); /* Deep Navy to Slate Blue */
+    --card-dark: rgba(30, 40, 50, 0.7);
+}
+
+/* Maghrib Theme (Sunset/Twilight) */
+.theme-maghrib {
+    background: linear-gradient(135deg, #2b0b04, #4e1a0d); /* Burnt Orange to Dark Red */
+    --card-dark: rgba(50, 20, 10, 0.7);
+}
+
+/* Isha Theme (Night/Deep Space) */
+.theme-isha {
+    background: linear-gradient(135deg, #050510, #151530); /* Very Dark Blue/Black */
+    --card-dark: rgba(10, 10, 30, 0.8);
+}
+
+/* 7. Responsiveness (Mobile-Friendly) */
+@media (max-width: 900px) {
+    .main-grid {
+        grid-template-columns: 1fr; /* Single column layout on mobile */
+        gap: 15px;
+    }
+    .names-card, .date-card, #dua-card, #qibla-card, .prayer-card {
+        grid-column: 1 / 2;
+        grid-row: auto !important; /* Force auto row placement */
+    }
+    .prayer-times-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+/* 6. Footer */
+footer {
+    text-align: center;
+    padding: 20px 0 0;
+    color: #777;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 20px;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: var(--gold-primary);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+.social-links a:hover {
+    color: #fff;
+    transform: scale(1.1);
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tawakkul</title>    
+    <link href="https://fonts.googleapis.com/css2?family=Lateef:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lateef:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="card title-card">
+            <h1>Tawakkul - توكل</h1>
+            <p>Trust. Plan. Achieve.</p>
+        </header>
+
+        <div class="main-grid">
+            
+            <div class="card names-card" id="asma-card">
+                <h2>99 Names of Allah (Asma ul Husna)</h2>
+                <div id="asma-ul-husna-carousel">
+                    </div>
+                <div class="carousel-controls">
+                    <button id="prev-btn" class="control-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button id="play-pause-btn" class="control-btn"><i class="fas fa-pause"></i></button>
+                    <button id="next-btn" class="control-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <div class="card date-card">
+                <h2>🗓️ Date & Countdown</h2>
+                <p id="hijri-date" class="date-display">Loading Hijri Date...</p>
+                <p id="gregorian-date" class="date-display" style="font-size: 1rem; color: #ccc;">Loading Gregorian Date...</p>
+                
+                <p class="countdown-label">Next Ramadan in:</p>
+                <p id="ramadan-countdown" class="countdown">--D --H --M</p>
+            </div>
+
+            <div class="card hadith-card" id="dua-card">
+                <h2>🤲 Du'a of the Moment</h2>
+                <div id="dua-content">
+                    <p class="arabic-text">Loading...</p>
+                    <p class="english-text">Loading relevant supplication...</p>
+                </div>
+            </div>
+            
+            <div class="card hadith-card" id="qibla-card">
+                <h2>🧭 Qibla Direction</h2>
+                <div class="qibla-display">
+                    <p id="qibla-angle" class="countdown">--</p>
+                    <p class="english-text">Angle from North: <span id="qibla-degrees">--°</span></p>
+                </div>
+            </div>
+
+            <div class="card prayer-card">
+                <h2>🕌 Prayer Times</h2>
+                <div id="next-prayer-info">
+                    Next Prayer: <span id="next-prayer-name">...</span> in <span id="next-prayer-countdown">--h --m --s</span>
+                </div>
+                <div class="prayer-times-grid" id="prayer-times-list">
+                    </div>
+         </main>
+
+        <footer>
+            <p>&copy; 2025 Mahfuz Anam Khan</p>
+            <div class="social-links">
+                <a href="https://instagram.com/mahfuzanamkhann" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/mahfuzanamkhan" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/mahfuzanamkhan" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </footer>
+    </div>
+        <script src="script.js"></script>
+</body>
+</html>
