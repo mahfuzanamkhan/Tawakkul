@@ -1,5 +1,6 @@
-<div align="center">
-  <img src="assets/banner.png" alt="Tawakkul Banner" style="max-width:100%; border-radius:12px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); margin-bottom:18px;">
+<p align="center">
+  <img src="assets/2.png" alt="Tawakkul Banner" style="max-width:100%; border-radius:12px;">
+</p>
   <h1 style="color:#FFD700; font-weight:800; margin:6px 0; font-size:44px; line-height:1.05;">
     Tawakkul — توكل
   </h1>
